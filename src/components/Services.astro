@@ -3,6 +3,8 @@
 import ServiceCard from './ServiceCard.astro';
 import { Scale, FileText, Users, BookOpen, Briefcase, GavelIcon } from './Icons.astro';
 
+const whatsappNumber = "543884326541"; // Sin el signo + para el enlace de WhatsApp
+
 const services = [
   {
     id: "derecho-penal",
@@ -13,7 +15,8 @@ const services = [
       "Representación en juicios orales",
       "Asesoramiento preventivo"
     ],
-    icon: Scale
+    icon: Scale,
+    whatsappMessage: "Hola, me interesa recibir asesoramiento sobre Derecho Penal. ¿Podrían brindarme más información?"
   },
   {
     id: "derecho-civil",
@@ -24,7 +27,8 @@ const services = [
       "Responsabilidad civil",
       "Derechos reales y propiedad"
     ],
-    icon: FileText
+    icon: FileText,
+    whatsappMessage: "Hola, necesito asesoramiento en Derecho Civil y Comercial. ¿Podrían ayudarme con mi caso?"
   },
   {
     id: "derecho-familia",
@@ -35,7 +39,8 @@ const services = [
       "Custodia y régimen de visitas",
       "Pensiones alimenticias"
     ],
-    icon: Users
+    icon: Users,
+    whatsappMessage: "Hola, me gustaría consultar sobre un caso de Derecho de Familia. ¿Tienen disponibilidad para una consulta?"
   },
   {
     id: "sucesiones",
@@ -46,7 +51,8 @@ const services = [
       "Partición de herencias",
       "Testamentos y planificación sucesoria"
     ],
-    icon: BookOpen
+    icon: BookOpen,
+    whatsappMessage: "Hola, necesito asesoramiento sobre un proceso sucesorio. ¿Podrían brindarme información sobre sus servicios?"
   },
   {
     id: "derecho-laboral",
@@ -57,7 +63,8 @@ const services = [
       "Accidentes de trabajo",
       "Contratos laborales"
     ],
-    icon: Briefcase
+    icon: Briefcase,
+    whatsappMessage: "Hola, tengo una consulta sobre Derecho Laboral. ¿Podrían asesorarme sobre mi situación?"
   },
   {
     id: "mediacion-arbitraje",
@@ -68,16 +75,13 @@ const services = [
       "Arbitraje comercial",
       "Negociación y conciliación"
     ],
-    icon: GavelIcon
+    icon: GavelIcon,
+    whatsappMessage: "Hola, me interesa conocer más sobre sus servicios de Mediación y Arbitraje. ¿Podrían brindarme información?"
   }
 ];
 ---
 
 <section id="servicios" class="animate-section relative py-24 bg-gradient-to-b from-brand-900 to-brand-800 overflow-hidden scroll-mt-24">
-  <!-- Decorative elements -->
-  <!-- <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-700 via-amber-500 to-amber-700"></div>
-  <div class="absolute top-0 right-0 w-64 h-64 rounded-full bg-amber-700/10 -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
-  <div class="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-amber-700/10 translate-y-1/2 -translate-x-1/2 blur-3xl"></div> -->
   
   <div class="container mx-auto px-4 relative z-10">
     <div class="text-center mb-16">
@@ -121,10 +125,15 @@ const services = [
             </div>
             
             <div class="px-6 py-4 bg-brand-800/50 border-t border-brand-600/30">
-              <a href={`#${service.id}-details`} class="text-amber-400 hover:text-amber-300 text-sm font-medium flex items-center transition-colors duration-300">
-                Más información
+              <a 
+                href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(service.whatsappMessage)}`} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="text-amber-400 hover:text-amber-300 text-sm font-medium flex items-center transition-colors duration-300"
+              >
+                Consultar por WhatsApp
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347" />
                 </svg>
               </a>
             </div>
@@ -134,10 +143,15 @@ const services = [
     </div>
     
     <div class="mt-16 text-center">
-      <a href="#contacto" class="inline-flex items-center px-8 py-3 bg-amber-700 hover:bg-amber-600 text-white font-medium rounded-md transition-colors duration-300 shadow-lg hover:shadow-amber-700/20">
+      <a 
+        href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hola, me gustaría recibir asesoramiento legal. ¿Podrían contactarme?")}`}
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="inline-flex items-center px-8 py-3 bg-amber-700 hover:bg-amber-600 text-white font-medium rounded-md transition-colors duration-300 shadow-lg hover:shadow-amber-700/20"
+      >
         Solicitar Asesoramiento
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347" />
         </svg>
       </a>
     </div>
