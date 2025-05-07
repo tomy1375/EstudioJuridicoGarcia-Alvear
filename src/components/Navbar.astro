@@ -1,0 +1,132 @@
+---
+// Navbar component
+---
+
+<nav class="fixed w-full z-50 bg-brand-800/90 h-[72px] md:h-auto">
+  <div class="container mx-auto px-4 h-full flex justify-between items-center">
+    <a href="#inicio" class="flex items-center">
+      <img src="/logoj.webp" alt="Logo" class="h-10 md:h-14" />
+    </a>
+    
+    <div class="hidden lg:flex items-center space-x-8 text-white/90 font-medium">
+      <a href="#inicio" class="hover:text-amber-400 transition-colors duration-300">INICIO</a>
+      
+      <div class="relative group">
+        <button class="flex items-center hover:text-amber-400 transition-colors duration-300">
+          SERVICIOS
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1 w-4 h-4 transition-transform duration-300 group-hover:rotate-180">
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </button>
+        <div class="absolute left-0 mt-2 w-64 rounded-md shadow-lg bg-brand-700 overflow-hidden transform scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-300 origin-top-left z-50">
+          <div class="py-2">
+            <a href="#derecho-penal" class="block px-4 py-3 text-sm text-amber-500 hover:bg-amber-900/20 hover:text-amber-300 transition-colors duration-200">Derecho Penal</a>
+            <a href="#derecho-civil" class="block px-4 py-3 text-sm text-amber-500 hover:bg-amber-900/20 hover:text-amber-300 transition-colors duration-200">Derecho Civil y Comercial</a>
+            <a href="#derecho-familia" class="block px-4 py-3 text-sm text-amber-500 hover:bg-amber-900/20 hover:text-amber-300 transition-colors duration-200">Derecho de Familia</a>
+            <a href="#sucesiones" class="block px-4 py-3 text-sm text-amber-500 hover:bg-amber-900/20 hover:text-amber-300 transition-colors duration-200">Sucesiones</a>
+            <a href="#derecho-laboral" class="block px-4 py-3 text-sm text-amber-500 hover:bg-amber-900/20 hover:text-amber-300 transition-colors duration-200">Derecho Laboral</a>
+          </div>
+        </div>
+      </div>
+      
+      <a href="#sobre-nosotros" class="hover:text-amber-400 transition-colors duration-300">SOBRE NOSOTROS</a>
+      <a href="#equipo" class="hover:text-amber-400 transition-colors duration-300">EQUIPO</a>
+      <a href="#contacto" class="hover:text-amber-400 transition-colors duration-300">CONTACTO</a>
+    </div>
+    
+    <!-- Mobile menu button - Posición fija -->
+    <div class="lg:hidden flex items-center justify-center w-10 h-10">
+      <button id="mobile-menu-button" class="text-amber-600 hover:text-amber-400 transition-colors duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="fixed inset-0 bg-brand-800 z-40 transform -translate-x-full transition-transform duration-300 lg:hidden">
+    <div class="container mx-auto px-4 py-6">
+      <div class="flex justify-between items-center mb-8">
+        <img src="/logoj.webp" alt="Logo" class="h-12" />
+        <button id="close-menu-button" class="text-amber-600 hover:text-amber-400 transition-colors duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      
+      <div class="flex flex-col space-y-4 text-amber-600 font-medium">
+        <a href="#inicio" class="py-3 border-b border-amber-900/30 hover:text-amber-400 transition-colors duration-300">INICIO</a>
+        
+        <div class="py-3 border-b border-amber-900/30">
+          <button id="mobile-services-button" class="flex items-center justify-between w-full hover:text-amber-400 transition-colors duration-300">
+            SERVICIOS
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" id="mobile-services-icon">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+          
+          <div id="mobile-services-dropdown" class="hidden mt-4 ml-4 space-y-3">
+            <a href="#derecho-penal" class="block py-2 text-sm text-amber-500 hover:text-amber-300 transition-colors duration-200">Derecho Penal</a>
+            <a href="#derecho-civil" class="block py-2 text-sm text-amber-500 hover:text-amber-300 transition-colors duration-200">Derecho Civil y Comercial</a>
+            <a href="#derecho-familia" class="block py-2 text-sm text-amber-500 hover:text-amber-300 transition-colors duration-200">Derecho de Familia</a>
+            <a href="#sucesiones" class="block py-2 text-sm text-amber-500 hover:text-amber-300 transition-colors duration-200">Sucesiones</a>
+            <a href="#derecho-laboral" class="block py-2 text-sm text-amber-500 hover:text-amber-300 transition-colors duration-200">Derecho Laboral</a>
+          </div>
+        </div>
+        
+        <a href="#sobre-nosotros" class="py-3 border-b border-amber-900/30 hover:text-amber-400 transition-colors duration-300">SOBRE NOSOTROS</a>
+        <a href="#equipo" class="py-3 border-b border-amber-900/30 hover:text-amber-400 transition-colors duration-300">EQUIPO</a>
+        <a href="#contacto" class="py-3 border-b border-amber-900/30 hover:text-amber-400 transition-colors duration-300">CONTACTO</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const closeMenuButton = document.getElementById('close-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuButton && mobileMenu && closeMenuButton) {
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.remove('-translate-x-full');
+      });
+      
+      closeMenuButton.addEventListener('click', () => {
+        if (mobileMenu) {
+          mobileMenu.classList.add('-translate-x-full');
+        }
+      });
+    }
+    
+    // Mobile services dropdown
+    const mobileServicesButton = document.getElementById('mobile-services-button');
+    const mobileServicesDropdown = document.getElementById('mobile-services-dropdown');
+    const mobileServicesIcon = document.getElementById('mobile-services-icon');
+    
+    if (mobileServicesButton && mobileServicesDropdown && mobileServicesIcon) {
+      mobileServicesButton.addEventListener('click', () => {
+        mobileServicesDropdown.classList.toggle('hidden');
+        mobileServicesIcon.classList.toggle('rotate-180');
+      });
+    }
+    
+    // Close mobile menu when clicking on a link
+    const mobileLinks = document.querySelectorAll('#mobile-menu a');
+    
+    if (mobileMenu) {
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('-translate-x-full');
+        });
+      });
+    }
+  });
+</script>

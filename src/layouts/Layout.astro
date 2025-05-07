@@ -1,22 +1,338 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props as Props;
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="es" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
+		<meta name="description" content="Estudio Jurídico especializado en derecho de familia, civil, penal, laboral y sucesiones. Soluciones legales en toda Argentina." />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
+		<ViewTransitions />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		
+		<!-- Script para cargar GSAP dinámicamente -->
+		<script is:inline>
+			// Verificar si GSAP ya está cargado
+			if (typeof gsap === 'undefined') {
+				// Cargar GSAP desde CDN si no está disponible
+				const loadScript = (src) => {
+					return new Promise((resolve, reject) => {
+						const script = document.createElement('script');
+						script.src = src;
+						script.onload = resolve;
+						script.onerror = reject;
+						document.head.appendChild(script);
+					});
+				};
+
+				// Cargar GSAP y plugins
+				Promise.all([
+					loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js'),
+					loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js')
+				]).then(() => {
+					console.log('GSAP cargado desde CDN');
+					// Iniciar animaciones después de cargar GSAP
+					setTimeout(initAnimations, 300);
+				}).catch(err => {
+					console.error('Error al cargar GSAP:', err);
+				});
+			} else {
+				// Si GSAP ya está disponible, iniciar animaciones
+				setTimeout(initAnimations, 300);
+			}
+
+			function initAnimations() {
+				console.log('Inicializando animaciones GSAP');
+				
+				// Registrar plugins
+				gsap.registerPlugin(ScrollTrigger);
+				
+				// Detectar si es dispositivo móvil
+				const isMobile = window.innerWidth < 768;
+				
+				// Estabilizar elementos de fondo y decorativos
+				const bgElements = document.querySelectorAll('.bg-element, .decorative-element');
+				gsap.set(bgElements, {
+					willChange: 'transform',
+					transform: 'translateZ(0)',
+					backfaceVisibility: 'hidden'
+				});
+				
+				// Animación del hero
+				const heroTl = gsap.timeline();
+				
+				// Asegurarse de que los fondos no se muevan en móvil
+				if (isMobile) {
+					// Desactivar cualquier animación de fondo en móvil
+					gsap.set('.bg-gradient, .bg-pattern, .bg-element, .decorative-element', {
+						clearProps: 'all',
+						willChange: 'auto'
+					});
+				}
+				
+				heroTl.from('.hero-title', {
+					y: 50,
+					opacity: 0,
+					duration: 1,
+					ease: 'power3.out'
+				})
+				.from('.hero-description', {
+					y: 30,
+					opacity: 0,
+					duration: 0.8,
+					ease: 'power3.out'
+				}, '-=0.6')
+				.from('.hero-cta', {
+					y: 20,
+					opacity: 0,
+					duration: 0.6,
+					ease: 'power3.out'
+				}, '-=0.4')
+				.from('.hero-image', {
+					scale: 0.9,
+					opacity: 0,
+					duration: 1,
+					ease: 'power2.out'
+				}, '-=0.8');
+				
+				// Animación de secciones al hacer scroll - Sin mover fondos en móvil
+				const sections = document.querySelectorAll('.animate-section');
+				sections.forEach(section => {
+					// No animar los fondos o elementos decorativos dentro de las secciones en móvil
+					if (isMobile) {
+						const bgInSection = section.querySelectorAll('.bg-element, .decorative-element');
+						gsap.set(bgInSection, {
+							clearProps: 'all',
+							willChange: 'auto'
+						});
+					}
+					
+					gsap.from(section, {
+						y: 30,
+						opacity: 0,
+						duration: 0.8,
+						ease: 'power2.out',
+						scrollTrigger: {
+							trigger: section,
+							start: 'top 80%',
+							toggleActions: 'play none none none'
+						}
+					});
+				});
+				
+				// Animación de tarjetas de servicios
+				const serviceCards = document.querySelectorAll('.service-card');
+				serviceCards.forEach((card, index) => {
+					gsap.from(card, {
+						y: 40,
+						opacity: 0,
+						duration: 0.6,
+						delay: index * 0.1,
+						ease: 'power2.out',
+						scrollTrigger: {
+							trigger: card,
+							start: 'top 85%',
+							toggleActions: 'play none none none'
+						}
+					});
+				});
+				
+				// Animación de miembros del equipo
+				const teamMembers = document.querySelectorAll('.team-member');
+				teamMembers.forEach((member, index) => {
+					gsap.from(member, {
+						y: 30,
+						opacity: 0,
+						duration: 0.7,
+						delay: index * 0.15,
+						ease: 'power2.out',
+						scrollTrigger: {
+							trigger: member,
+							start: 'top 80%',
+							toggleActions: 'play none none none'
+						}
+					});
+				});
+				
+				// Animación de elementos de contacto
+				const contactForm = document.querySelector('.contact-form');
+				if (contactForm) {
+					gsap.from(contactForm, {
+						x: -30,
+						opacity: 0,
+						duration: 0.8,
+						ease: 'power2.out',
+						scrollTrigger: {
+							trigger: contactForm,
+							start: 'top 75%',
+							toggleActions: 'play none none none'
+						}
+					});
+				}
+				
+				const contactInfo = document.querySelector('.contact-info');
+				if (contactInfo) {
+					gsap.from(contactInfo, {
+						x: 30,
+						opacity: 0,
+						duration: 0.8,
+						ease: 'power2.out',
+						scrollTrigger: {
+							trigger: contactInfo,
+							start: 'top 75%',
+							toggleActions: 'play none none none'
+						}
+					});
+				}
+				
+				// Animación para los iconos de características
+				const featureIcons = document.querySelectorAll('.feature-icon');
+				featureIcons.forEach((icon, index) => {
+					gsap.from(icon, {
+						scale: 0.5,
+						opacity: 0,
+						duration: 0.5,
+						delay: index * 0.05,
+						ease: 'back.out(1.7)',
+						scrollTrigger: {
+							trigger: icon,
+							start: 'top 85%',
+							toggleActions: 'play none none none'
+						}
+					});
+				});
+				
+				console.log('Animaciones GSAP inicializadas');
+			}
+		</script>
 	</head>
-	<body>
+	<body class="font-raleway">
 		<slot />
 	</body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
+<style is:global>
+	:root {
+		--accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+	}
+	
+	html {
+		font-family: 'Raleway', sans-serif;
+		background: #000;
+		color: #fff;
+	}
+
+  html, body {
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
+    max-width: 100vw;
+  }
+
+/* Asegurar que los elementos con posición absoluta o fija no sean afectados por overflow-hidden */
+.fixed, .absolute {
+  z-index: auto;
+}
+
+/* Aumentar el z-index para elementos de menú */
+.z-40 {
+  z-index: 40;
+}
+.z-50 {
+  z-index: 50;
+}
+.z-60 {
+  z-index: 60;
+}
+
+  /* Asegurar que ningún elemento cause scroll horizontal */
+  * {
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+	
+	h1, h2, h3, h4, h5, h6 {
+		font-family: 'Playfair Display', serif;
+	}
+	
+	/* Estabilizar el navbar */
+	nav {
+		will-change: transform;
+		transform: translateZ(0);
+		backface-visibility: hidden;
+		perspective: 1000px;
+	}
+	
+	/* Estabilizar elementos de fondo */
+	.bg-element, .decorative-element {
+		will-change: transform;
+		transform: translateZ(0);
+		backface-visibility: hidden;
+	}
+	
+	/* Evitar que los fondos grandes afecten al navbar en móvil */
+	@media (max-width: 767px) {
+		.bg-element, .decorative-element {
+			transform: none !important;
+			transition: none !important;
+			animation: none !important;
+			will-change: auto;
+		}
+	}
+
+  /* Prevenir el overscroll en móviles pero permitir que los menús funcionen */
+  @media (max-width: 767px) {
+    html, body {
+      touch-action: pan-y;
+      -webkit-overflow-scrolling: touch;
+    }
+  
+    /* Asegurar que los menús desplegables sean visibles */
+    #mobile-menu, 
+    #mobile-services-dropdown,
+    .dropdown-content {
+      overflow: visible !important;
+      visibility: visible;
+      background-color: var(--brand-800, #1a202c);
+    }
+  }
+	
+	.animate-fade-in {
+		animation: fadeIn 1s ease-in-out;
+	}
+	
+	.animate-fade-in-delayed {
+		animation: fadeIn 1s ease-in-out 0.5s both;
+	}
+	
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
 </style>

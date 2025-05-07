@@ -1,0 +1,141 @@
+---
+// Team component
+import TeamMember from './TeamMember.astro';
+
+const teamMembers = [
+  {
+    name: "Dr. Carlos Irineo",
+    role: "Socio Fundador - Especialista en Derecho de Familia",
+    bio: "Con más de 20 años de experiencia, lidera nuestro departamento de derecho familiar con dedicación y excelencia.",
+    image: "/lawyer1.png",
+    education: ["Doctor en Derecho, Universidad de Buenos Aires", "Especialización en Derecho de Familia"],
+    contact: "cirineo@estudiojuridico.com",
+    areas: ["Divorcios", "Custodia", "Alimentos", "Filiación"]
+  },
+  {
+    name: "Dra. María Calzone",
+    role: "Socia Fundadora - Especialista en Derecho Civil",
+    bio: "Reconocida por su enfoque estratégico y su capacidad para resolver casos complejos con soluciones innovadoras.",
+    image: "/lawyer2.png",
+    education: ["Doctora en Derecho, Universidad Nacional de Córdoba", "Máster en Derecho Civil"],
+    contact: "mcalzone@estudiojuridico.com",
+    areas: ["Contratos", "Responsabilidad Civil", "Derechos Reales", "Obligaciones"]
+  },
+  {
+    name: "Dr. Javier Mendoza",
+    role: "Asociado - Especialista en Derecho Laboral",
+    bio: "Experto en conflictos laborales, con un historial probado de éxito en la defensa de los derechos de los trabajadores.",
+    image: "/lawyer3.png",
+    education: ["Abogado, Universidad de La Plata", "Especialización en Derecho del Trabajo"],
+    contact: "jmendoza@estudiojuridico.com",
+    areas: ["Despidos", "Accidentes Laborales", "Convenios Colectivos", "Litigios Laborales"]
+  }
+];
+---
+
+<section id="equipo" class="animate-section relative py-24 bg-gradient-to-b from-brand-800 to-brand-900 overflow-hidden scroll-mt-24">
+  <!-- Elementos decorativos -->
+  <!-- <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-700/50 via-amber-500 to-amber-700/50"></div>
+  <div class="absolute top-0 left-0 w-72 h-72 rounded-full bg-amber-700/5 -translate-y-1/2 -translate-x-1/4 blur-3xl"></div>
+  <div class="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-amber-700/5 translate-y-1/2 translate-x-1/4 blur-3xl"></div>
+   -->
+  <!-- Patrón de fondo sutil -->
+  <!-- <div class="absolute inset-0 opacity-5 bg-[url('/pattern.png')] bg-repeat"></div> -->
+  
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-5xl font-bold mb-4 text-amber-500 font-playfair">
+        Nuestro Equipo Legal
+      </h2>
+      <div class="w-24 h-1 bg-amber-700 mx-auto mb-6"></div>
+      <p class="text-lg text-brand-100 max-w-2xl mx-auto">
+        Contamos con profesionales altamente calificados y comprometidos con la excelencia, 
+        dedicados a brindar el mejor asesoramiento legal a nuestros clientes.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      {teamMembers.map((member, index) => (
+        <div class="team-member group relative">
+          <!-- Efecto de brillo en el contorno al hacer hover -->
+          {/* <div class="absolute -inset-0.5 bg-gradient-to-r from-amber-600 to-amber-800 rounded-lg opacity-0 group-hover:opacity-70 transition-opacity duration-500 blur-sm"></div> */}
+          
+          <!-- Tarjeta principal con borde transparente para que se vea el brillo -->
+          <div class="relative bg-brand-700/40 backdrop-blur-sm rounded-lg border-transparent shadow-xl overflow-hidden h-full transition-all duration-300 group-hover:shadow-amber-700/20">
+            <!-- Imagen con overlay -->
+            <div class="relative h-80 overflow-hidden">
+              <img src={member.image || "/placeholder.svg"} alt={member.name} class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-900 via-brand-900/80 to-transparent opacity-60"></div>
+              
+              <!-- Información de contacto que aparece al hacer hover -->
+              <div class="absolute inset-0 flex flex-col justify-center items-center bg-brand-800/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 class="text-2xl font-bold text-amber-400 mb-2 font-playfair">{member.name}</h3>
+                <p class="text-amber-300 mb-4 text-center px-6">{member.role}</p>
+                <a href={`mailto:${member.contact}`} class="inline-flex items-center px-4 py-2 bg-amber-700 hover:bg-amber-600 text-white text-sm font-medium rounded-md transition-colors duration-300 shadow-lg">
+                  Contactar
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            
+            <!-- Contenido -->
+            <div class="p-6">
+              <h3 class="text-2xl font-bold mb-2 text-amber-400 font-playfair">{member.name}</h3>
+              <p class="text-amber-300 mb-4">{member.role}</p>
+              <p class="text-brand-100 mb-6">{member.bio}</p>
+              
+              <!-- Formación académica -->
+              <div class="mb-6">
+                <h4 class="text-lg font-semibold text-amber-400 mb-3 flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                  </svg>
+                  Formación
+                </h4>
+                <ul class="space-y-2">
+                  {member.education.map(edu => (
+                    <li class="text-brand-200 text-sm flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="feature-icon h-4 w-4 text-amber-500 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                      </svg>
+                      {edu}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              <!-- Áreas de práctica -->
+              <div>
+                <h4 class="text-lg font-semibold text-amber-400 mb-3 flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm3.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L7.586 10 5.293 7.707a1 1 0 010-1.414zM11 12a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
+                  </svg>
+                  Áreas de Práctica
+                </h4>
+                <div class="flex flex-wrap gap-2">
+                  {member.areas.map(area => (
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-700/20 text-amber-300 border border-amber-700/30">
+                      {area}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="mt-16 text-center">
+      <a href="#contacto" class="inline-flex items-center px-8 py-3 bg-amber-700 hover:bg-amber-600 text-white font-medium rounded-md transition-colors duration-300 shadow-lg hover:shadow-amber-700/20">
+        Contactar con nuestro equipo
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,179 @@
+---
+// Services component
+import ServiceCard from './ServiceCard.astro';
+import { Scale, FileText, Users, BookOpen, Briefcase, GavelIcon } from './Icons.astro';
+
+const services = [
+  {
+    id: "derecho-penal",
+    title: "Derecho Penal",
+    description: "Ofrecemos asesoramiento y representación legal en casos penales, defendiendo sus derechos con experiencia y dedicación.",
+    features: [
+      "Defensa en casos de delitos",
+      "Representación en juicios orales",
+      "Asesoramiento preventivo"
+    ],
+    icon: Scale
+  },
+  {
+    id: "derecho-civil",
+    title: "Derecho Civil y Comercial",
+    description: "Brindamos soluciones legales en asuntos civiles y comerciales, protegiendo sus intereses con profesionalismo.",
+    features: [
+      "Contratos y obligaciones",
+      "Responsabilidad civil",
+      "Derechos reales y propiedad"
+    ],
+    icon: FileText
+  },
+  {
+    id: "derecho-familia",
+    title: "Derecho de Familia",
+    description: "Especialistas en derecho familiar, ofrecemos asesoramiento personalizado para resolver sus asuntos familiares.",
+    features: [
+      "Divorcios y separaciones",
+      "Custodia y régimen de visitas",
+      "Pensiones alimenticias"
+    ],
+    icon: Users
+  },
+  {
+    id: "sucesiones",
+    title: "Sucesiones",
+    description: "Gestionamos procesos sucesorios con eficiencia y sensibilidad, facilitando la transición patrimonial.",
+    features: [
+      "Trámites sucesorios",
+      "Partición de herencias",
+      "Testamentos y planificación sucesoria"
+    ],
+    icon: BookOpen
+  },
+  {
+    id: "derecho-laboral",
+    title: "Derecho Laboral",
+    description: "Defendemos los derechos de trabajadores y empleadores, buscando soluciones justas en conflictos laborales.",
+    features: [
+      "Despidos y indemnizaciones",
+      "Accidentes de trabajo",
+      "Contratos laborales"
+    ],
+    icon: Briefcase
+  },
+  {
+    id: "mediacion-arbitraje",
+    title: "Mediación y Arbitraje",
+    description: "Facilitamos la resolución alternativa de conflictos, evitando procesos judiciales largos y costosos.",
+    features: [
+      "Mediación extrajudicial",
+      "Arbitraje comercial",
+      "Negociación y conciliación"
+    ],
+    icon: GavelIcon
+  }
+];
+---
+
+<section id="servicios" class="animate-section relative py-24 bg-gradient-to-b from-brand-900 to-brand-800 overflow-hidden scroll-mt-24">
+  <!-- Decorative elements -->
+  <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-700 via-amber-500 to-amber-700"></div>
+  <div class="absolute top-0 right-0 w-64 h-64 rounded-full bg-amber-700/10 -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+  <div class="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-amber-700/10 translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
+  
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-5xl font-bold mb-4 text-amber-500 font-playfair">
+        Nuestros Servicios Legales
+      </h2>
+      <div class="w-24 h-1 bg-amber-700 mx-auto mb-6"></div>
+      <p class="text-lg text-brand-100 max-w-2xl mx-auto">
+        Ofrecemos asesoramiento legal integral con un enfoque personalizado para cada cliente, 
+        garantizando soluciones efectivas a sus necesidades jurídicas.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {services.map(service => (
+        <div class="service-card group transition-all duration-300 hover:translate-y-[-5px]">
+          <div id={service.id} class="scroll-mt-32 bg-brand-700/40 backdrop-blur-sm rounded-lg border border-brand-600/30 shadow-xl overflow-hidden h-full transition-all duration-300 hover:shadow-amber-700/20 hover:border-amber-700/30">
+            <div class="p-6">
+              <div class="feature-icon w-16 h-16 rounded-full bg-gradient-to-br from-amber-600 to-amber-800 flex items-center justify-center mb-6 text-white">
+                <Fragment set:html={service.icon()} />
+              </div>
+              
+              <h3 class="text-2xl font-bold mb-3 text-amber-400 group-hover:text-amber-300 transition-colors duration-300 font-playfair">
+                {service.title}
+              </h3>
+              
+              <p class="text-brand-100 mb-6">
+                {service.description}
+              </p>
+              
+              <ul class="space-y-3">
+                {service.features.map(feature => (
+                  <li class="flex items-start">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="feature-icon h-5 w-5 text-amber-500 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="text-brand-200">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div class="px-6 py-4 bg-brand-800/50 border-t border-brand-600/30">
+              <a href={`#${service.id}-details`} class="text-amber-400 hover:text-amber-300 text-sm font-medium flex items-center transition-colors duration-300">
+                Más información
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="mt-16 text-center">
+      <a href="#contacto" class="inline-flex items-center px-8 py-3 bg-amber-700 hover:bg-amber-600 text-white font-medium rounded-md transition-colors duration-300 shadow-lg hover:shadow-amber-700/20">
+        Solicitar Asesoramiento
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Función para manejar el desplazamiento suave a los anclajes
+  document.addEventListener('DOMContentLoaded', function() {
+    // Obtener todos los enlaces que apuntan a anclajes
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    
+    // Agregar evento de clic a cada enlace
+    anchorLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        // Prevenir el comportamiento predeterminado
+        e.preventDefault();
+        
+        // Obtener el ID del destino
+        const targetId = this.getAttribute('href').substring(1);
+        
+        // Verificar si el elemento existe
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          // Calcular la posición del elemento
+          const navbarHeight = 80; // Altura aproximada del navbar
+          const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+          
+          // Desplazarse suavemente a la posición
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  });
+</script>
