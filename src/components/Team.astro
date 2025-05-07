@@ -7,7 +7,7 @@ const teamMembers = [
     name: "Dr. Carlos Garcia",
     role: "Socio Fundador - Especialista en Derecho de Familia",
     bio: "Con más de 20 años de experiencia, lidera nuestro departamento de derecho familiar con dedicación y excelencia.",
-    image: "/lawyer1.png",
+    image: "/abogado.webp",
     education: ["Doctor en Derecho, Universidad de Buenos Aires", "Especialización en Derecho de Familia"],
     contact: "cirineo@estudiojuridico.com",
     areas: ["Divorcios", "Custodia", "Alimentos", "Filiación"]
@@ -16,7 +16,7 @@ const teamMembers = [
     name: "Dra. María Alvear",
     role: "Socia Fundadora - Especialista en Derecho Civil",
     bio: "Reconocida por su enfoque estratégico y su capacidad para resolver casos complejos con soluciones innovadoras.",
-    image: "/lawyer2.png",
+    image: "/abogada.webp",
     education: ["Doctora en Derecho, Universidad Nacional de Córdoba", "Máster en Derecho Civil"],
     contact: "mcalzone@estudiojuridico.com",
     areas: ["Contratos", "Responsabilidad Civil", "Derechos Reales", "Obligaciones"]
@@ -25,7 +25,7 @@ const teamMembers = [
     name: "Dr. Javier Mendoza",
     role: "Asociado - Especialista en Derecho Laboral",
     bio: "Experto en conflictos laborales, con un historial probado de éxito en la defensa de los derechos de los trabajadores.",
-    image: "/lawyer3.png",
+    image: "/abogado2.webp",
     education: ["Abogado, Universidad de La Plata", "Especialización en Derecho del Trabajo"],
     contact: "jmendoza@estudiojuridico.com",
     areas: ["Despidos", "Accidentes Laborales", "Convenios Colectivos", "Litigios Laborales"]
@@ -65,7 +65,7 @@ const teamMembers = [
             <!-- Imagen con overlay -->
             <div class="relative h-80 overflow-hidden">
               <img src={member.image || "/placeholder.svg"} alt={member.name} class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" />
-              <div class="absolute inset-0 bg-gradient-to-t from-brand-900 via-brand-900/80 to-transparent opacity-60"></div>
+              <div class="absolute inset-0  from-brand-900 via-brand-900/80 to-transparent opacity-60"></div>
               
               <!-- Información de contacto que aparece al hacer hover -->
               <div class="absolute inset-0 flex flex-col justify-center items-center bg-brand-800/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
