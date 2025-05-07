@@ -1,0 +1,293 @@
+---
+// WorkProcess component - Proceso de Trabajo
+---
+
+<section id="proceso" class="animate-section relative py-24 bg-gradient-to-b from-brand-900 to-brand-800 overflow-hidden scroll-mt-24">
+  
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="text-center mb-16">
+      <span class="text-amber-500 font-medium tracking-wider process-subtitle">PROCESO DE TRABAJO</span>
+      <h2 class="text-3xl md:text-5xl font-bold mt-3 mb-4 text-amber-500 font-playfair process-title">
+        Seguimos el Mejor Flujo de Trabajo<br class="hidden md:block" /> para Resolver su Caso
+      </h2>
+      <div class="w-24 h-1 bg-amber-700 mx-auto mb-6"></div>
+    </div>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+      <!-- Proceso - Lado izquierdo -->
+      <div class="process-steps space-y-12 relative">
+        <!-- Línea vertical conectora -->
+        <div class="absolute left-8 top-8 bottom-8 w-0.5 bg-amber-700/30 process-line" style="transform-origin: top center;"></div>
+        
+        <!-- Paso 1 -->
+        <div class="process-step flex items-start gap-6 relative">
+          <div class="process-number flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-amber-600 to-amber-800 flex items-center justify-center text-white text-2xl font-bold z-10">1</div>
+          <div class="process-content">
+            <h3 class="text-2xl font-bold text-amber-400 mb-3 font-playfair">PRIMERA CITA</h3>
+            <p class="text-brand-100">
+              Te recibimos personalmente en <a href="#contacto" class="text-amber-500 hover:text-amber-400 transition-colors">nuestro estudio</a> o bien, vía online a través de una videollamada.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Paso 2 -->
+        <div class="process-step flex items-start gap-6 relative">
+          <div class="process-number flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-amber-600 to-amber-800 flex items-center justify-center text-white text-2xl font-bold z-10">2</div>
+          <div class="process-content">
+            <h3 class="text-2xl font-bold text-amber-400 mb-3 font-playfair">ANÁLISIS Y EVALUACIÓN</h3>
+            <p class="text-brand-100">
+              Escuchamos tu caso, lo debatimos con el equipo de profesionales y te damos una respuesta acorde a tus necesidades.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Paso 3 -->
+        <div class="process-step flex items-start gap-6 relative">
+          <div class="process-number flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-amber-600 to-amber-800 flex items-center justify-center text-white text-2xl font-bold z-10">3</div>
+          <div class="process-content">
+            <h3 class="text-2xl font-bold text-amber-400 mb-3 font-playfair">SEGUIMIENTO DEL CASO</h3>
+            <p class="text-brand-100">
+              Te acompañamos durante el tiempo que lleve tu caso. Asesoramos en cada detalle y buscamos el mejor resultado, en el menor tiempo posible.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Imagen - Lado derecho -->
+      <div class="process-image relative rounded-lg overflow-hidden shadow-2xl shadow-amber-900/20 border border-brand-700/50">
+        <img 
+          src="/proceso.webp" 
+          alt="Abogados en reunión" 
+          class="w-full h-full object-cover"
+          onerror="this.onerror=null; this.src='/placeholder.svg?height=600&width=800&query=professional lawyers meeting discussing case'"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-900 via-transparent to-transparent opacity-60"></div>
+      </div>
+    </div>
+    
+    <!-- CTA -->
+    <div class="mt-16 text-center process-cta">
+      <a href="#contacto" class="inline-flex items-center px-8 py-3 bg-amber-700 hover:bg-amber-600 text-white font-medium rounded-md transition-colors duration-300 shadow-lg hover:shadow-amber-700/20">
+        Agenda tu consulta
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Función para animar elementos con compatibilidad universal
+    function animateElements() {
+      // Configuración de la animación
+      const duration = 800; // Duración en milisegundos
+      const staggerDelay = 300; // Retraso entre elementos en milisegundos
+      
+      // Animar la línea de proceso
+      const processLine = document.querySelector('.process-line');
+      if (processLine) {
+        processLine.style.transform = 'scaleY(0)';
+        setTimeout(() => {
+          processLine.style.transition = 'transform 1.5s ease-in-out';
+          processLine.style.transform = 'scaleY(1)';
+        }, 100);
+      }
+      
+      // Animar los pasos del proceso
+      const processSteps = document.querySelectorAll('.process-step');
+      processSteps.forEach((step, index) => {
+        step.style.opacity = '0';
+        step.style.transform = 'translateX(-50px)';
+        setTimeout(() => {
+          step.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+          step.style.opacity = '1';
+          step.style.transform = 'translateX(0)';
+        }, 100 + (index * staggerDelay));
+      });
+      
+      // Animar la imagen
+      const processImage = document.querySelector('.process-image');
+      if (processImage) {
+        processImage.style.opacity = '0';
+        processImage.style.transform = 'translateX(50px)';
+        setTimeout(() => {
+          processImage.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+          processImage.style.opacity = '1';
+          processImage.style.transform = 'translateX(0)';
+        }, 100 + (processSteps.length * staggerDelay));
+      }
+      
+      // Animar el título y subtítulo
+      const processSubtitle = document.querySelector('.process-subtitle');
+      const processTitle = document.querySelector('.process-title');
+      
+      if (processSubtitle) {
+        processSubtitle.style.opacity = '0';
+        processSubtitle.style.transform = 'translateY(-20px)';
+        setTimeout(() => {
+          processSubtitle.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+          processSubtitle.style.opacity = '1';
+          processSubtitle.style.transform = 'translateY(0)';
+        }, 100);
+      }
+      
+      if (processTitle) {
+        processTitle.style.opacity = '0';
+        processTitle.style.transform = 'translateY(30px)';
+        setTimeout(() => {
+          processTitle.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+          processTitle.style.opacity = '1';
+          processTitle.style.transform = 'translateY(0)';
+        }, 300);
+      }
+      
+      // Animar el CTA
+      const processCta = document.querySelector('.process-cta');
+      if (processCta) {
+        processCta.style.opacity = '0';
+        processCta.style.transform = 'translateY(30px)';
+        setTimeout(() => {
+          processCta.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+          processCta.style.opacity = '1';
+          processCta.style.transform = 'translateY(0)';
+        }, 100 + (processSteps.length * staggerDelay) + 500);
+      }
+    }
+    
+    // Función para verificar si un elemento está en el viewport
+    function isInViewport(element) {
+      const rect = element.getBoundingClientRect();
+      return (
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+        rect.bottom >= 0
+      );
+    }
+    
+    // Intentar usar GSAP si está disponible, de lo contrario usar animación nativa
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      console.log('GSAP disponible, usando animaciones GSAP para el proceso');
+      
+      // Animación para la línea de proceso
+      gsap.from('.process-line', {
+        scaleY: 0,
+        transformOrigin: 'top center',
+        duration: 1.5,
+        ease: 'power3.inOut',
+        scrollTrigger: {
+          trigger: '.process-steps',
+          start: 'top 70%',
+          toggleActions: 'play none none none'
+        }
+      });
+      
+      // Animación para los pasos del proceso
+      gsap.from('.process-step', {
+        opacity: 0,
+        x: -50,
+        stagger: 0.3,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.process-steps',
+          start: 'top 70%',
+          toggleActions: 'play none none none'
+        }
+      });
+      
+      // Animación para la imagen
+      gsap.from('.process-image', {
+        opacity: 0,
+        x: 50,
+        duration: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.process-image',
+          start: 'top 70%',
+          toggleActions: 'play none none none'
+        }
+      });
+      
+      // Animación para el título y subtítulo
+      gsap.from('.process-subtitle', {
+        opacity: 0,
+        y: -20,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '#proceso',
+          start: 'top 80%',
+          toggleActions: 'play none none none'
+        }
+      });
+      
+      gsap.from('.process-title', {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        delay: 0.2,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '#proceso',
+          start: 'top 80%',
+          toggleActions: 'play none none none'
+        }
+      });
+      
+      // Animación para el CTA
+      gsap.from('.process-cta', {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        delay: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.process-steps',
+          start: 'bottom 70%',
+          toggleActions: 'play none none none'
+        }
+      });
+    } else {
+      console.log('GSAP no disponible o ScrollTrigger no registrado, usando animaciones nativas para el proceso');
+      
+      // Usar IntersectionObserver para detectar cuando la sección está visible
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateElements();
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      const processSection = document.getElementById('proceso');
+      if (processSection) {
+        observer.observe(processSection);
+      }
+      
+      // Si la sección ya es visible al cargar la página, animar inmediatamente
+      setTimeout(() => {
+        const processSection = document.getElementById('proceso');
+        if (processSection && isInViewport(processSection)) {
+          animateElements();
+        }
+      }, 500);
+    }
+    
+    // Manejar el scroll para animar elementos cuando entran en el viewport
+    window.addEventListener('scroll', function() {
+      // Solo si GSAP no está disponible
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+        const processSection = document.getElementById('proceso');
+        if (processSection && isInViewport(processSection)) {
+          // Verificar si ya se ha animado
+          if (processSection.getAttribute('data-animated') !== 'true') {
+            animateElements();
+            processSection.setAttribute('data-animated', 'true');
+          }
+        }
+      }
+    }, { passive: true });
+  });
+</script>

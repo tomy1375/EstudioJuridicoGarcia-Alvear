@@ -2,11 +2,18 @@
 // Hero component
 ---
 
-<section id="inicio" class="relative min-h-screen flex items-center pt-20">
-  <!-- Background Image with overlay -->
-  <div class="absolute inset-0 z-0">
-    <img src="/juridico2.webp" alt="Lady Justice" class="w-full h-full object-cover opacity-40" />
-    <div class="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
+<section id="inicio" class="relative min-h-screen flex items-center pt-20 overflow-x-hidden">
+  <!-- Background Image with overlay - Usando picture para diferentes imágenes según dispositivo -->
+  <div class="bg-element absolute inset-0 z-0">
+    <picture>
+      <!-- Imagen para móviles (hasta 768px) -->
+      <source media="(max-width: 767px)" srcset="/justiciamovil.webp" />
+      <!-- Imagen para tablets y escritorio (768px y superior) -->
+      <source media="(min-width: 768px)" srcset="/juridico2.webp" />
+      <!-- Imagen fallback si el navegador no soporta picture -->
+      <img src="/juridico2.webp" alt="Lady Justice" class="w-full h-full object-cover opacity-40" />
+    </picture>
+    <div class="decorative-element absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
   </div>
 
   <!-- Content -->
@@ -31,9 +38,18 @@
       </a>
     </div>
     <div class="md:w-1/2 flex justify-center">
-      <div class="hero-image w-64 md:w-96 h-">
-        <img src="/logoj.webp" alt="Irineo & Calzone Logo" class="w-full" />
+      <div class="hero-image w-64 md:w-96">
+        <img src="/logoj.webp" alt="Garcia & Alvear Logo" class="w-full" />
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  // Precargar la imagen de fondo para evitar parpadeos
+  document.addEventListener('DOMContentLoaded', function() {
+    const isMobile = window.innerWidth < 768;
+    const bgImage = new Image();
+    bgImage.src = isMobile ? '/justiciamovil.webp' : '/juridico2.webp';
+  });
+</script>

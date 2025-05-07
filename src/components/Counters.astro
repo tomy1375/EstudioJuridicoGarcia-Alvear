@@ -1,0 +1,208 @@
+---
+// Counters component
+---
+
+<section id="estadisticas" class="animate-section py-24 bg-gradient-to-b from-brand-800 to-brand-900 overflow-hidden scroll-mt-24">
+  <!-- Elementos decorativos -->
+ 
+  <div class="container mx-auto px-4 relative z-10">
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+      <!-- Años de experiencia -->
+      <div class="counter-item flex flex-col items-center bg-brand-700/20 backdrop-blur-sm rounded-lg border border-brand-600/30 p-8 transition-all duration-300 hover:border-amber-700/30 hover:shadow-amber-700/20">
+        <div class="icon-wrapper mb-6 text-amber-500">
+          <!-- SVG de columnas/edificio -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
+          </svg>
+        </div>
+        <div class="counter-value flex items-baseline justify-center">
+          <span class="text-5xl font-bold text-amber-400 font-playfair">+</span>
+          <span class="text-5xl font-bold text-amber-400 font-playfair counter" data-target="20" data-value="0">0</span>
+        </div>
+        <h3 class="mt-3 text-amber-300 font-medium tracking-wide">AÑOS DE EXPERIENCIA</h3>
+      </div>
+
+      <!-- Casos resueltos -->
+      <div class="counter-item flex flex-col items-center bg-brand-700/20 backdrop-blur-sm rounded-lg border border-brand-600/30 p-8 transition-all duration-300 hover:border-amber-700/30 hover:shadow-amber-700/20">
+        <div class="icon-wrapper mb-6 text-amber-500">
+          <!-- SVG de documento/contrato -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+        </div>
+        <div class="counter-value flex items-baseline justify-center">
+          <span class="text-5xl font-bold text-amber-400 font-playfair">+</span>
+          <span class="text-5xl font-bold text-amber-400 font-playfair counter" data-target="480" data-value="0">0</span>
+        </div>
+        <h3 class="mt-3 text-amber-300 font-medium tracking-wide">CASOS RESUELTOS</h3>
+      </div>
+
+      <!-- Clientes felices -->
+      <div class="counter-item flex flex-col items-center bg-brand-700/20 backdrop-blur-sm rounded-lg border border-brand-600/30 p-8 transition-all duration-300 hover:border-amber-700/30 hover:shadow-amber-700/20">
+        <div class="icon-wrapper mb-6 text-amber-500">
+          <!-- SVG de apretón de manos -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" />
+          </svg>
+        </div>
+        <div class="counter-value flex items-baseline justify-center">
+          <span class="text-5xl font-bold text-amber-400 font-playfair counter" data-target="279" data-value="0">0</span>
+        </div>
+        <h3 class="mt-3 text-amber-300 font-medium tracking-wide">CLIENTES FELICES</h3>
+      </div>
+
+      <!-- Consultas online -->
+      <div class="counter-item flex flex-col items-center bg-brand-700/20 backdrop-blur-sm rounded-lg border border-brand-600/30 p-8 transition-all duration-300 hover:border-amber-700/30 hover:shadow-amber-700/20">
+        <div class="icon-wrapper mb-6 text-amber-500">
+          <!-- SVG de laptop/computadora -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+        </div>
+        <div class="counter-value flex items-baseline justify-center">
+          <span class="text-5xl font-bold text-amber-400 font-playfair">+</span>
+          <span class="text-5xl font-bold text-amber-400 font-playfair counter" data-target="1600" data-value="0">0</span>
+        </div>
+        <h3 class="mt-3 text-amber-300 font-medium tracking-wide">CONSULTAS ONLINE</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Función para animar contadores con compatibilidad universal
+    function animateCounters() {
+      const counters = document.querySelectorAll('.counter');
+      const duration = 2000; // Duración en milisegundos
+      const frameDuration = 1000 / 60; // 60fps
+      
+      counters.forEach(counter => {
+        // Verificar que el elemento exista y tenga el atributo data-target
+        if (!counter || !counter.getAttribute('data-target')) {
+          console.warn('Contador sin atributo data-target:', counter);
+          return;
+        }
+        
+        const target = parseInt(counter.getAttribute('data-target') || '0');
+        let currentValue = parseInt(counter.getAttribute('data-value') || '0');
+        
+        // Calcular incremento por frame para una animación suave
+        const totalFrames = Math.round(duration / frameDuration);
+        const increment = (target - currentValue) / totalFrames;
+        
+        // Función para actualizar el contador
+        function updateCounter() {
+          currentValue += increment;
+          
+          if ((increment > 0 && currentValue >= target) || 
+              (increment < 0 && currentValue <= target)) {
+            currentValue = target;
+            counter.textContent = target.toString();
+            counter.setAttribute('data-value', target.toString());
+            return;
+          }
+          
+          counter.textContent = Math.round(currentValue).toString();
+          counter.setAttribute('data-value', Math.round(currentValue).toString());
+          requestAnimationFrame(updateCounter);
+        }
+        
+        // Iniciar la animación cuando el elemento sea visible
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              // Pequeño retraso para asegurar que todo esté listo
+              setTimeout(() => {
+                updateCounter();
+              }, 100);
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        
+        observer.observe(counter);
+      });
+    }
+    
+    // Intentar usar GSAP si está disponible, de lo contrario usar la animación nativa
+    if (typeof gsap !== 'undefined') {
+      console.log('GSAP disponible, usando animaciones GSAP');
+      
+      // Registrar ScrollTrigger si está disponible
+      if (typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+      }
+      
+      // Animar contadores con GSAP
+      const counters = document.querySelectorAll('.counter');
+      
+      counters.forEach(counter => {
+        // Verificar que el elemento exista y tenga el atributo data-target
+        if (!counter || !counter.getAttribute('data-target')) {
+          console.warn('Contador sin atributo data-target:', counter);
+          return;
+        }
+        
+        const target = parseInt(counter.getAttribute('data-target') || '0');
+        
+        // Usar un objeto proxy para la animación en lugar de manipular directamente el DOM
+        // Esto es más compatible con diferentes navegadores
+        const counterProxy = { value: 0 };
+        
+        gsap.to(counterProxy, {
+          value: target,
+          duration: 2.5,
+          ease: "power2.out",
+          onUpdate: function() {
+            // Actualizar el texto del contador
+            const value = Math.round(counterProxy.value);
+            counter.textContent = value.toString();
+            counter.setAttribute('data-value', value.toString());
+          },
+          scrollTrigger: {
+            trigger: counter.closest('.counter-item'),
+            start: "top 80%",
+            toggleActions: "play none none none"
+          }
+        });
+        
+        // Animar también el contenedor
+        const counterItem = counter.closest('.counter-item');
+        if (counterItem) {
+          gsap.from(counterItem, {
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: counterItem,
+              start: "top 80%",
+              toggleActions: "play none none none"
+            }
+          });
+        }
+      });
+    } else {
+      console.log('GSAP no disponible, usando animaciones nativas');
+      // Usar animación nativa
+      animateCounters();
+    }
+    
+    // Asegurarse de que los contadores se animen si el usuario recarga la página
+    // y ya está en la sección de estadísticas
+    setTimeout(() => {
+      const statsSection = document.getElementById('estadisticas');
+      if (statsSection) {
+        const rect = statsSection.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          // La sección ya es visible, forzar la animación
+          if (typeof gsap === 'undefined') {
+            animateCounters();
+          }
+        }
+      }
+    }, 500);
+  });
+</script>
